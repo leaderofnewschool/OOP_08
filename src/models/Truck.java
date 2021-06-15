@@ -2,7 +2,8 @@ package models;
 
 public class Truck {
     private int travelTime=10;
-    private int truckCapacity=15;
+    private  final  int TRUCKCAPACITY=15;
+
     private int TruckCapacity_Left=15;
     public int timer=0;
 
@@ -36,7 +37,7 @@ public class Truck {
 
     public void unloadTruck(String type){
         for (int i = 0; i < ArrayLists.truckList.size(); i++) {
-            if(ArrayLists.truckList.get(i).equals(type)){
+            if(ArrayLists.truckList.get(i).equalsIgnoreCase(type)){
                 ArrayLists.truckList.remove(i);
                 break;
             }
@@ -67,6 +68,7 @@ public class Truck {
     public void truckGo(){
         if(timer==travelTime){
             //coin;
+            timer=0;
             ArrayLists.truckList.clear();
             for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
                 if(ArrayLists.farmAnimalList.get(i).isTruck)
