@@ -23,7 +23,7 @@ public class Login {
 
         int fileSize = 0;
         try {
-            File file = new File("/Users/parniantaheri/Desktop/AP_08/users.txt");
+            File file = new File("/Users/parniantaheri/IdeaProjects/OOP_08/users.txt");
             Scanner fileReader = new Scanner(file);
             while (fileReader.hasNextLine()) {
                 temp[fileSize] = fileReader.nextLine();
@@ -51,9 +51,9 @@ public class Login {
                         }
                     }
                     if (!user) {
-                        System.out.println("wrong username!! \nplease try again or for main menu please insert quit ");
+                        System.out.println("wrong username!! \nplease try again or for main menu please insert log out ");
                         username = scanner.nextLine();
-                        if (username.equalsIgnoreCase("quit")) {
+                        if (username.equalsIgnoreCase("log out")) {
                             check = false;
                             break;
                         }
@@ -70,9 +70,9 @@ public class Login {
                             check = true;
                             return;
                         } else {
-                            System.out.println("wrong password!! \nplease try again or for main menu please insert quit ");
+                            System.out.println("wrong password!! \nplease try again or for main menu please insert log out ");
                             password = scanner.nextLine();
-                            if (password.equalsIgnoreCase("quit")) {
+                            if (password.equalsIgnoreCase("log out")) {
                                 check = false;
                                 user = false;
                                 break;
@@ -105,10 +105,10 @@ public class Login {
                     }
 
                 }
-                    System.out.println("password: ");
-                    password=scanner.nextLine();
+                System.out.println("password: ");
+                password=scanner.nextLine();
                 try {
-                    FileWriter fileWriter = new FileWriter("/Users/parniantaheri/Desktop/AP_08/users.txt",true);
+                    FileWriter fileWriter = new FileWriter("/Users/parniantaheri/IdeaProjects/OOP_08/users.txt",true);
                     fileWriter.write("\nusername: "+username+"\npassword: "+password+"\nlevel: "+level+"\ncoin: "+coin);
                     fileWriter.close();
                 } catch (IOException e) {
@@ -128,5 +128,5 @@ public class Login {
 
 
     }
-    }
+}
 
