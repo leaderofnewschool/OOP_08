@@ -6,13 +6,12 @@ import java.util.Scanner;
 
 public class Menu {
     String input="";
-    String[] temp=new String[50];
     Scanner scanner = new Scanner(System.in);
     public void menu(){
         while(true){
             System.out.println("menu");
             input=scanner.nextLine();
-            temp=input.split("//s");
+            String[] temp=input.split("\\s");
             if(input.contains("START")){
                 System.out.println(temp[0]);
                 if(Integer.parseInt(temp[1])> InputProcessor.level+1){
