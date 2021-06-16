@@ -3,17 +3,17 @@ package models;
 import java.util.ArrayList;
 
 public class WildAnimal extends Animal {
-    public boolean isAvailable=true;
     public boolean store = false;
     private WildAnimalType wildAnimalType;
     private int cageClick;
     public boolean truck = false;
+
     public WildAnimal(WildAnimalType wildAnimalType){
         this.wildAnimalType=wildAnimalType;
         this.cageClick = wildAnimalType.getCageClick();
         ArrayLists.wildAnimalList.add(this);
-
     }
+
     public WildAnimalType getWildAnimalType() { return wildAnimalType; }
 
     public int quantity(String animal){

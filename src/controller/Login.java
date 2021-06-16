@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Login {
+public class LogIn {
 
     public void log(int level,int coin) {
         String insertCheck ="";
@@ -105,8 +105,8 @@ public class Login {
                     }
 
                 }
-                System.out.println("password: ");
-                password=scanner.nextLine();
+                    System.out.println("password: ");
+                    password=scanner.nextLine();
                 try {
                     FileWriter fileWriter = new FileWriter("/Users/parniantaheri/IdeaProjects/OOP_08/users.txt",true);
                     fileWriter.write("\nusername: "+username+"\npassword: "+password+"\nlevel: "+level+"\ncoin: "+coin);
@@ -128,5 +128,5 @@ public class Login {
 
 
     }
-}
+    }
 

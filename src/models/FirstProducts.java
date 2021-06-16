@@ -10,6 +10,7 @@ public class FirstProducts {
 
   public FirstProducts(FirstProductTypes firstProductTypes) {
     this.firstProductTypes = firstProductTypes;
+    ArrayLists.firstProductList.add(this);
   }
 
   public int quantity(String product){

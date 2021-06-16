@@ -12,6 +12,7 @@ public class SecondaryProducts {
 
     public SecondaryProducts(SecondaryProductTypes secondaryProductTypes) {
         this.secondaryProductTypes = secondaryProductTypes;
+        ArrayLists.secondaryProductList.add(this);
     }
 
     public SecondaryProductTypes getSecondaryProductTypes() {

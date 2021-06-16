@@ -1,9 +1,9 @@
 package models;
 
 public class Well {
-    private static final int capacity=5;
+    private static final int CAPCITY=5;
     private final int timeToFill=3;
-    private static int waterLeft=capacity;
+    private static int waterLeft=CAPCITY;
     public static int cnt=0;
     public static void useWell(){
         if(waterLeft==0){
@@ -15,28 +15,14 @@ public class Well {
         }
     }
 
-    public static void fillWell(){
-        if(waterLeft==0&cnt!=3)
-        {
-            cnt++;
-            System.out.println(1);
-        }
-
-            else if(waterLeft==0&cnt==3) {
-                waterLeft=5;
+    public  static void fillWell(){
+        if(waterLeft==0&cnt!=3) cnt++;
+        else if(waterLeft==0&cnt==3) {
+                waterLeft=CAPCITY;
                 cnt=0;
-            System.out.println(2);
-
+                Request.isWell=false;
             }
-        System.out.println("finished");
-    }
-
-    public static int getCapacity() {
-        return capacity;
-    }
-
-    public int getTimeToFill() {
-        return timeToFill;
+        System.out.println("well filled successfully");
     }
 
     public static int getWaterLeft() {

@@ -26,12 +26,12 @@ public class WeavingWorkshop extends Workshops{
         if (counter == timer) {
             for (int i = 0; i < quantity; i++) {
                 SecondaryProducts secondaryProduct = new SecondaryProducts(SecondaryProductTypes.SHIRT);
-                ArrayLists.secondaryProductList.add(secondaryProduct);
                 putProductInMap();
                 secondaryProduct.x = outputProductX;
                 secondaryProduct.y = outputProductY;
             }
             counter=1;
+            Request.isWeaving=false;
         }
         else counter++;
     }
