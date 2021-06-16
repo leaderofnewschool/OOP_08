@@ -3,16 +3,15 @@ package models;
 import java.util.ArrayList;
 
 public class FarmAnimal extends Animal{
-    private int buyPrice;
-    private int sellPrice;
     private int timeTillFill;
-    private  int productionPeriod;
+    private int productionPeriod;
     private int live=10;
     public boolean isAvailable=true;
     public boolean store=false;
     public boolean isTruck = false;
     private FarmAnimalType farmAnimalType;
     int speed;
+    int produce_timer=0;
 
 
     public FarmAnimal(FarmAnimalType farmAnimalType){
@@ -45,45 +44,40 @@ public class FarmAnimal extends Animal{
     public static void produceFromAnimal(FarmAnimal farmAnimal){
         if(farmAnimal.farmAnimalType.equals("CHIKEN")) {
             AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.EGG,farmAnimal.getX(),farmAnimal.getY());
-            ArrayLists.animalProductList.add(animalProducts);
         }
         else if(farmAnimal.farmAnimalType.equals("TURKEY")) {
             AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.FEATHER,farmAnimal.getX(),farmAnimal.getY());
-            ArrayLists.animalProductList.add(animalProducts);
         }
         else if(farmAnimal.farmAnimalType.equals("BUFFALO")) {
             AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.MILK,farmAnimal.getX(),farmAnimal.getY());
-            ArrayLists.animalProductList.add(animalProducts);
         }
 
 
     }
 
-    public static void removeByWild(){
-        for (int i = 0; i <ArrayLists.farmAnimalList.size() ; i++) {
-            for (int j = 0; j < ArrayLists.wildAnimalList.size(); j++) {
-                if( ArrayLists.farmAnimalList.get(i).isAvailable==true & ArrayLists.wildAnimalList.get(j).isAvailable==true)
-                {
-                    if(ArrayLists.farmAnimalList.get(i).getX()==ArrayLists.wildAnimalList.get(j).getX()&ArrayLists.farmAnimalList.get(i).getY()==ArrayLists.wildAnimalList.get(j).getY()){
-                        ArrayLists.farmAnimalList.get(i).isAvailable=false;
-                        ArrayLists.farmAnimalList.get(i).store=false;
-                        ArrayLists.wildAnimalList.get(j).isAvailable=false;
-                        ArrayLists.wildAnimalList.get(j).store=false;
-                    }
+    public void removeByWild(){
+        for (int j = 0; j < ArrayLists.wildAnimalList.size(); j++) {
+            if(this.isAvailable==true && this.getX()==ArrayLists.wildAnimalList.get(j).getX() && this.getY()==ArrayLists.wildAnimalList.get(j).getY()){
+                this.isAvailable=false;
+                this.store=false;
+            }
+        }
+    }
+
+    public void produce(){
+                if (this.farmAnimalType.getProductionPeriod() == produce_timer) {
+                    produce_timer = 0;
+                    produceFromAnimal(this);
                 }
+                else produce_timer++;
 
-            }
-
-        }
     }
 
-    public static void removeForSell(){
-        for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
-            if(ArrayLists.farmAnimalList.get(i).isAvailable){
-                ArrayLists.farmAnimalList.get(i).isAvailable=false;
-                break;
-            }
-        }
+    public void hunger (){
+        if (!this.isHungry()) { this. live--; }
+        else  eatGrass(this);
+        if (this.live == 0) this.isAvailable = false;
+
     }
 
     public int quantity(String product){
@@ -112,31 +106,6 @@ public class FarmAnimal extends Animal{
         return 0;
     }
 
-    public static void nextStep(int cnt){
-        for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
-            if (ArrayLists.farmAnimalList.get(i).isAvailable) {
-                if (ArrayLists.farmAnimalList.get(i).farmAnimalType.getProductionPeriod() == cnt) {
-                    cnt = 0;
-                    produceFromAnimal(ArrayLists.farmAnimalList.get(i));
-                }
-                else cnt++;
-                if (!ArrayLists.farmAnimalList.get(i).isHungry()) {
-                    ArrayLists.farmAnimalList.get(i). live--;
-                }
-                else  eatGrass(ArrayLists.farmAnimalList.get(i));
-                if (ArrayLists.farmAnimalList.get(i).live == 0) ArrayLists.farmAnimalList.get(i).isAvailable = false;
-            }
-        }
-
-    }
-
-    public int getBuyPrice() {
-        return buyPrice;
-    }
-
-    public int getSellPrice() {
-        return sellPrice;
-    }
 
     public int getTimeTillFill() {
         return timeTillFill;

@@ -26,12 +26,12 @@ public class MillWorkshop extends Workshops{
         if (counter == timer) {
             for (int i = 0; i < quantity; i++) {
                 FirstProducts firstProduct = new FirstProducts(FirstProductTypes.FLOUR);
-                ArrayLists.firstProductList.add(firstProduct);
                 putProductInMap();
                 firstProduct.x = outputProductX;
                 firstProduct.y = outputProductY;
             }
             counter=1;
+            Request.isMill=false;
         }
         else counter++;
     }

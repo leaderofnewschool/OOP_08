@@ -3,11 +3,8 @@ package models;
 import java.util.ArrayList;
 
 public class Cat extends Animal{
-    private final int BUY_CAT_COST=150;
+    public static final int BUY_CAT_COST=150;
     public boolean isAvailable=true;
-
-
-
 
     public Cat(){
         ArrayLists.catList.add(this);
@@ -87,16 +84,13 @@ public class Cat extends Animal{
 
     }
 
-    public static void removeCatByWild(){
-        for (int i = 0; i <ArrayLists.catList.size() ; i++) {
-            for (int j = 0; j < ArrayLists.wildAnimalList.size(); j++) {
-                if(ArrayLists.catList.get(i).isAvailable==true & ArrayLists.wildAnimalList.get(j).isAvailable==true)
-                if(ArrayLists.catList.get(i).getX()==ArrayLists.wildAnimalList.get(j).getX()&ArrayLists.catList.get(i).getY()==ArrayLists.wildAnimalList.get(j).getY()){
-                    ArrayLists.catList.get(i).isAvailable=false;
+    public void removeCatByWild(){
+        for (int j = 0; j < ArrayLists.wildAnimalList.size(); j++) {
+            if (this.isAvailable == true) {
+                if (this.getX() == ArrayLists.wildAnimalList.get(j).getX() & this.getY() == ArrayLists.wildAnimalList.get(j).getY()) {
+                    this.isAvailable = false;
                 }
-
             }
-
         }
     }
 

@@ -6,9 +6,7 @@ public class MilkPackagingWorkshop extends Workshops{
     int timer=1;
     int quantity = 1;
 
-    MilkPackagingWorkshop (){
-        super(1,6, 400,"MILK","POCKET_MILK");
-    }
+    MilkPackagingWorkshop (){ super(1,6, 400,"MILK","POCKET_MILK"); }
 
     public void millMakingProgress() {
         isWorking = true;
@@ -26,12 +24,12 @@ public class MilkPackagingWorkshop extends Workshops{
         if (counter == timer) {
             for (int i = 0; i < quantity; i++) {
                 FirstProducts firstProduct = new FirstProducts(FirstProductTypes.PACKET_MILK);
-                ArrayLists.firstProductList.add(firstProduct);
                 putProductInMap();
                 firstProduct.x = outputProductX;
                 firstProduct.y = outputProductY;
             }
             counter=1;
+            Request.isMilk=false;
         }
         else counter++;
     }

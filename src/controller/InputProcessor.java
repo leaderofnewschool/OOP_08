@@ -1,14 +1,9 @@
 package controller;
 
-import controller.Login;
-import controller.Menu;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class InputProcessor {
-    Login logIn=new Login();
+    LogIn logIn=new LogIn();
     Menu menu=new Menu();
     Scanner sc = new Scanner(System.in);
     String input="";

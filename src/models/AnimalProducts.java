@@ -15,6 +15,7 @@ public class AnimalProducts {
         this.x=x;
         this.y=y;
         this.animalProductTypes = animalProductTypes;
+        ArrayLists.animalProductList.add(this);
     }
 
     public AnimalProductTypes getAnimalProductTypes() {

@@ -1,7 +1,7 @@
 package models;
 
 public enum FarmAnimalType {
-    CHIKEN (1, 2 , 2 , 100 , 5),
+    CHICKEN(1, 2 , 2 , 100 , 5),
     TURKEY (1, 2 , 3  , 200 , 10),
     BUFFALO (1, 2 , 5 , 400 , 20);
 

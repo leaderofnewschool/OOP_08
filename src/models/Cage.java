@@ -8,11 +8,7 @@ public class Cage {
     int y;
     int i;
 
-    public Cage(int x, int y){
-        this.x=x;
-        this.y=y;
-    }
-    public void cageBuilder1(){
+    public void cageBuilder1(int x, int y){
         for ( i = 0; i < ArrayLists.wildAnimalList.size(); i++) {
             if(ArrayLists.wildAnimalList.get(i).isAvailable){
                if(ArrayLists.wildAnimalList.get(i).getX()==x & ArrayLists.wildAnimalList.get(i).getY()==y){

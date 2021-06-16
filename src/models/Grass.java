@@ -12,6 +12,7 @@ public class Grass {
             Well.useWell();
             ArrayLists.grassList.add(this);
         }
+        else System.out.println("no water available");
     }
 }
 
