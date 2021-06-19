@@ -1,24 +1,25 @@
 package models;
 
 public class NextTurn {
-    int turn=1;
-    public void next_turn(){
-        Well well = null;
-        BakeryWorkshop bakeryWorkshop =null;
-        MillWorkshop millWorkshop = null;
-        IcecreamMakingWorkshop icecreamMakingWorkshop = null;
-        TailoringWorkshop tailoringWorkshop = null;
-        WeavingWorkshop weavingWorkshop = null;
-        MilkPackagingWorkshop milkPackagingWorkshop = null;
-        if (turn==1)
-        {
+    public static BakeryWorkshop bakeryWorkshop = null;
+    public static MillWorkshop millWorkshop = null;
+    public static IcecreamMakingWorkshop icecreamMakingWorkshop = null;
+    public static TailoringWorkshop tailoringWorkshop = null;
+    public static WeavingWorkshop weavingWorkshop = null;
+    public static MilkPackagingWorkshop milkPackagingWorkshop = null;
+    int turn = 1;
+    Well well = null;
+
+    public void next_turn() {
+
+        if (turn == 1) {
             well = new Well();
-            bakeryWorkshop = new BakeryWorkshop();
-            millWorkshop = new MillWorkshop();
-            icecreamMakingWorkshop = new IcecreamMakingWorkshop();
-            tailoringWorkshop = new TailoringWorkshop();
-            weavingWorkshop = new WeavingWorkshop();
-            milkPackagingWorkshop = new MilkPackagingWorkshop();
+//            bakeryWorkshop = new BakeryWorkshop();
+//            millWorkshop = new MillWorkshop();
+//            icecreamMakingWorkshop = new IcecreamMakingWorkshop();
+//            tailoringWorkshop = new TailoringWorkshop();
+//            weavingWorkshop = new WeavingWorkshop();
+//            milkPackagingWorkshop = new MilkPackagingWorkshop();
             turn++;
         }
         for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {

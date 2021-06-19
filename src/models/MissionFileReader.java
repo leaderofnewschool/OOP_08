@@ -1,7 +1,6 @@
 package models;
 
 import controller.InputProcessor;
-import models.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,7 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-
 public class WildAnimal extends Animal {
     public boolean store = false;
     private WildAnimalType wildAnimalType;
@@ -18,9 +16,9 @@ public class WildAnimal extends Animal {
     public WildAnimalType getWildAnimalType() { return wildAnimalType; }
 
     public int quantity(String animal){
-        int lion =0;
+        int lion = 0;
         int bear = 0;
-        int tiger =0;
+        int tiger = 0;
         for (int i = 0; i < ArrayLists.wildAnimalList.size(); i++) {
             if(ArrayLists.wildAnimalList.get(i).store){
                 if(animal.equals("LION")) {

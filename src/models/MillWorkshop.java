@@ -1,13 +1,13 @@
 // EGG ---> FLOUR
 package models;
 
-public class MillWorkshop extends Workshops{
-    int counter=1;
-    int timer=1;
+public class MillWorkshop extends Workshops {
+    int counter = 1;
+    int timer = 1;
     int quantity = 1;
 
-    MillWorkshop(){
-        super(1,4,150,"EGG","FLOUR");
+    MillWorkshop() {
+        super(1, 4, 150, "EGG", "FLOUR");
     }
 
     public void millMakingProgress() {
@@ -30,10 +30,9 @@ public class MillWorkshop extends Workshops{
                 firstProduct.x = outputProductX;
                 firstProduct.y = outputProductY;
             }
-            counter=1;
-            Request.isMill=false;
-        }
-        else counter++;
+            counter = 1;
+            Request.isMill = false;
+        } else counter++;
     }
 
 }
