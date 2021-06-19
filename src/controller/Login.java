@@ -110,6 +110,9 @@ public class LogIn {
                 try {
                     FileWriter fileWriter = new FileWriter("/Users/parniantaheri/IdeaProjects/OOP_08/users.txt",true);
                     fileWriter.write("\nusername: "+username+"\npassword: "+password+"\nlevel: "+level+"\ncoin: "+coin);
+                    InputProcessor.username=username;
+                    InputProcessor.password=password;
+                    InputProcessor.coin=coin;
                     fileWriter.close();
                 } catch (IOException e) {
                     e.printStackTrace();

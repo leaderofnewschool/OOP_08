@@ -7,6 +7,7 @@ public class WildAnimal extends Animal {
     private WildAnimalType wildAnimalType;
     private int cageClick;
     public boolean truck = false;
+    boolean isAvailable=true;
 
     public WildAnimal(WildAnimalType wildAnimalType){
         this.wildAnimalType=wildAnimalType;

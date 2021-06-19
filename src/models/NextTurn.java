@@ -40,8 +40,12 @@ public class NextTurn {
             int removed_dog= ArrayLists.dogList.get(i).removeDogAndWild();
             if(removed_dog!=0)  ArrayLists.dogList.remove(i);
         }
-        if(Request.isWell){
-            well.fillWell();
-        }
+        if(Request.isWell) well.fillWell();
+        if(Request.isBakery) bakeryWorkshop.bakeryProgress();
+        if(Request.isTailoring) tailoringWorkshop.tailoringProgress();
+        if(Request.isMill) millWorkshop.millMakingProgress();
+        if(Request.isIceCream) icecreamMakingWorkshop.icecreamMakingProgress();
+        if(Request.isMilk) milkPackagingWorkshop.milkPackagingProgress();
+        if(Request.isWeaving) weavingWorkshop.weavingProgress();
     }
 }

@@ -8,7 +8,7 @@ public class MilkPackagingWorkshop extends Workshops{
 
     MilkPackagingWorkshop (){ super(1,6, 400,"MILK","POCKET_MILK"); }
 
-    public void millMakingProgress() {
+    public void milkPackagingProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {
