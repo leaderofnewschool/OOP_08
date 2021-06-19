@@ -10,7 +10,7 @@ public class WeavingWorkshop extends Workshops{
         super(1,6,400,"CLOTH","SHIRT");
     }
 
-    public void bakeryProgress() {
+    public void weavingProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {

@@ -13,11 +13,11 @@ public class Menu {
             input=scanner.nextLine();
             String[] temp=input.split("\\s");
             if(input.contains("START")){
-                System.out.println(temp[0]);
                 if(Integer.parseInt(temp[1])> InputProcessor.level+1){
                     System.out.println("this level is lock!");
                 }
                 else {
+                    InputProcessor.level=Integer.parseInt(temp[1]);
                     InputProcessor.game=true;
                     return;
                 }

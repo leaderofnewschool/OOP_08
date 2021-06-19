@@ -1,5 +1,9 @@
 package models;
 
+import controller.InputProcessor;
+
+import java.util.Locale;
+
 public class Truck {
     private int travelTime=10;
     private final int TRUCK_CAPACITY=15;
@@ -70,8 +74,7 @@ public class Truck {
 
     public void truckGo(){
         if(timer==travelTime){
-            // TODO: 6/14/21
-            // coin;
+          inTruckPrice();
             timer=0;
             ArrayLists.truckList.clear();
             truckFill=0;
@@ -90,6 +93,60 @@ public class Truck {
         }
         else timer++;
 
+    }
+
+    public void inTruckPrice(){
+        for (int i = 0; i < ArrayLists.truckList.size(); i++) {
+            switch (ArrayLists.truckList.get(i).toLowerCase()){
+                case "chicken":
+                    InputProcessor.coin+=(FarmAnimalType.CHICKEN.getBuyCost()/2);
+                    break;
+                case "turkey":
+                    InputProcessor.coin+=(FarmAnimalType.TURKEY.getBuyCost()/2);
+                    break;
+                case "buffalo":
+                    InputProcessor.coin+=(FarmAnimalType.BUFFALO.getBuyCost()/2);
+                    break;
+                case "lion":
+                    InputProcessor.coin+=WildAnimalType.LION.getSellCost();
+                    break;
+                case "tiger":
+                    InputProcessor.coin+=WildAnimalType.TIGER.getSellCost();
+                    break;
+                case "bear":
+                    InputProcessor.coin+=WildAnimalType.BEAR.getSellCost();
+                    break;
+                case "egg":
+                    InputProcessor.coin+=AnimalProductTypes.EGG.getSaleCost();
+                    break;
+                case "milk":
+                    InputProcessor.coin+=AnimalProductTypes.MILK.getSaleCost();
+                    break;
+                case "feather":
+                    InputProcessor.coin+=AnimalProductTypes.FEATHER.getSaleCost();
+                    break;
+                case "flour":
+                    InputProcessor.coin+=FirstProductTypes.FLOUR.getSaleCost();
+                    break;
+                case "packet_milk":
+                    InputProcessor.coin+=FirstProductTypes.PACKET_MILK.getSaleCost();
+                    break;
+                case "cloth":
+                    InputProcessor.coin+=FirstProductTypes.CLOTH.getSaleCost();
+                    break;
+                case "shirt":
+                    InputProcessor.coin+=SecondaryProductTypes.SHIRT.getSaleCost();
+                    break;
+                case "bread":
+                    InputProcessor.coin+=SecondaryProductTypes.BREAD.getSaleCost();
+                    break;
+                case "icecream":
+                    InputProcessor.coin+=SecondaryProductTypes.ICECREAM.getSaleCost();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 }

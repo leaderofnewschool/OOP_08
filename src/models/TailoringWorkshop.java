@@ -10,7 +10,7 @@ public class TailoringWorkshop extends Workshops{
         super(1,5,250,"FEATHER", "CLOTH");
     }
 
-    public void millMakingProgress() {
+    public void tailoringProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {

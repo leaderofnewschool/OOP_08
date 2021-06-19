@@ -13,7 +13,7 @@ public class FirstProducts {
     ArrayLists.firstProductList.add(this);
   }
 
-  public int quantity(String product){
+  public static int quantity(String product){
     int flour=0;
     int packet_milk = 0;
     int cloth =0;

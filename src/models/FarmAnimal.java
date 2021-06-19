@@ -80,7 +80,7 @@ public class FarmAnimal extends Animal{
 
     }
 
-    public int quantity(String product){
+    public static int quantity(String product){
         int chiken =0;
         int turkey = 0;
         int buffalo =0;

@@ -26,7 +26,7 @@ public class AnimalProducts {
         this.animalProductTypes = animalProductTypes;
     }
 
-    public int quantity(String product){
+    public static int quantity(String product){
         int egg=0;
         int feather = 0;
         int milk =0;

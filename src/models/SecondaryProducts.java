@@ -23,7 +23,7 @@ public class SecondaryProducts {
         this.secondaryProductTypes = secondaryProductTypes;
     }
 
-    public int quantity(String product){
+    public static int quantity(String product){
         int bread=0;
         int shirt = 0;
         int icecream =0;
