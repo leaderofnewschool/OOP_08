@@ -1,7 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-
 public class SecondaryProducts {
     int x;
     int y;

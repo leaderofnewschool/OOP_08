@@ -2,8 +2,6 @@ package models;
 
 import controller.InputProcessor;
 
-import java.util.Locale;
-
 public class Truck {
     private int travelTime=10;
     private final int TRUCK_CAPACITY=15;

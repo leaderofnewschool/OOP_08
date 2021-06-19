@@ -1,12 +1,14 @@
 // MILK ---> POCKET_MILK
 package models;
 
-public class MilkPackagingWorkshop extends Workshops{
-    int counter=1;
-    int timer=1;
+public class MilkPackagingWorkshop extends Workshops {
+    int counter = 1;
+    int timer = 1;
     int quantity = 1;
 
-    MilkPackagingWorkshop (){ super(1,6, 400,"MILK","POCKET_MILK"); }
+    MilkPackagingWorkshop() {
+        super(1, 6, 400, "MILK", "POCKET_MILK");
+    }
 
     public void milkPackagingProgress() {
         isWorking = true;
@@ -28,10 +30,9 @@ public class MilkPackagingWorkshop extends Workshops{
                 firstProduct.x = outputProductX;
                 firstProduct.y = outputProductY;
             }
-            counter=1;
-            Request.isMilk=false;
-        }
-        else counter++;
+            counter = 1;
+            Request.isMilk = false;
+        } else counter++;
     }
 
 }

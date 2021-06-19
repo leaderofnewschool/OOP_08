@@ -4,8 +4,9 @@ public class InStore {
     private String type;
     private int price;
     private int depotSize;
-    private boolean isTruck=false;
-    public InStore(String type , int price, int depotSize){
+    private boolean isTruck = false;
+
+    public InStore(String type, int price, int depotSize) {
         this.type = type;
         this.price = price;
         this.depotSize = depotSize;
@@ -15,7 +16,7 @@ public class InStore {
     public String toString() {
         return "type='" + type + '\'' +
                 ", price=" + price +
-                ", depotSize=" + depotSize ;
+                ", depotSize=" + depotSize;
     }
 
     public String getType() {

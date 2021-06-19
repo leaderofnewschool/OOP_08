@@ -16,12 +16,12 @@ public class Well {
     }
 
     public  static void fillWell(){
-        if(waterLeft==0&cnt!=3) cnt++;
-        else if(waterLeft==0&cnt==3) {
-                waterLeft=CAPCITY;
-                cnt=0;
-                Request.isWell=false;
-            }
+        if (waterLeft == 0 & cnt != 3) cnt++;
+        else if (waterLeft == 0 & cnt == 3) {
+            waterLeft = CAPCITY;
+            cnt = 0;
+            Request.isWell = false;
+        }
         System.out.println("well filled successfully");
     }
 

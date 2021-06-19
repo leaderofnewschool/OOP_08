@@ -1,7 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-
 public class Store {
     private final int CAPACITY=30;
     private int usedCapacity=0;
@@ -101,8 +99,6 @@ public class Store {
         }
 
     }
-
-
 
 
     public int getCapacityLeft() {
