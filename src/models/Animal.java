@@ -5,7 +5,7 @@ import java.util.Random;
 public class Animal {
 
     Random random = new Random();
-    public static boolean temp = false;
+    public  boolean isArrived = false;
     private int x = random.nextInt(6) + 2;
     private int y = random.nextInt(6) + 2;
     private int xDirection;
@@ -14,14 +14,29 @@ public class Animal {
     private int speed = 1;
     private int timeR = 0;
 
-    public static void targetedMove(int speed, int animalX, int animalY, int destinationX, int destiantionY) {
+    public  void targetedMove(int speed, Animal animal, int destinationX, int destinationY) {
+        System.out.println(destinationX+" "+destinationY);
+        if (destinationX - animal.x == 0 & destinationY - animal.y == 0) {
+            isArrived = true;
+            return;
+        }
+        else if (destinationX - animal.x > 0 && animal.x<6) {
+            animal.x += speed;
+            System.out.println(2);}
+       else if (destinationX - animal.x < 0 && animal.x>1){ animal.x -=  speed;
+            System.out.println(1);}
 
-        if (destinationX - animalX < 0) animalX -= animalX * speed;
-        else if (destinationX - animalX > 0) animalX += animalX * speed;
-        if (destiantionY - animalY < 0) animalY -= animalY * speed;
-        else if (destiantionY - animalY > 0) animalY -= animalY * speed;
-        if (destinationX - animalX == 0 & destiantionY - animalY == 0) {
-            temp = true;
+        if (destinationY - animal.y < 0 && animal.y<6) {
+            animal.y -= speed;
+            System.out.println(3);
+        }
+        else if (destinationY - animal.y > 0 && animal.y>1){
+            animal.y -= speed;
+            System.out.println(4);
+        }
+
+        if (destinationX - animal.x == 0 & destinationY - animal.y == 0) {
+            isArrived = true;
             return;
         }
     }
@@ -33,7 +48,7 @@ public class Animal {
 
     public void move() {
         if (timeR == 0) {
-            timeR = random.nextInt(3) + 1;
+            timeR = random.nextInt(2) + 1;
             xDirection = randomiser(x);
             yDirection = randomiser(y);
             while (xDirection == 0 && yDirection == 0) {
@@ -48,7 +63,7 @@ public class Animal {
     public int randomiser(int value) {
         if (value <= speed * (timeR + 1)) {
             return random.nextInt(2);
-        } else if (value >= 29 - speed * (timeR + 1)) {
+        } else if (value >= 5 - speed * (timeR + 1)) {
             return random.nextInt(2) - 1;
         } else {
             return random.nextInt(3) - 1;

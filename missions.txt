@@ -1,0 +1,36 @@
+Level: 1
+Tasks: 10 egg 5 flour
+First animals: 4 chicken
+First coins: 0
+Wild animals: 4 lion 6
+Bonus:
+Level: 2
+Tasks: 10 flour 5 bread 4 chicken
+First animals: 1 chicken
+First coins: 100
+Wild animals: 1 lion 6
+Bonus:
+Level: 3
+Tasks: 10 bread 3 cloth 1000 coin
+First animals: 3 chicken
+First coins: 200
+Wild animals: 1 lion 6 1 bear 6 1 bear 30
+Bonus:
+Level: 4
+Tasks: 10 flour 10 shirt
+First animals: 1 chicken 1 turkey
+First coins: 100
+Wild animals: 1 bear 6 1 bear 35
+Bonus:
+Level: 5
+Tasks: 4 shirt 10 milk 1500 coin
+First animals: 2 Buffalo 
+First coins: 100
+Wild animals: 1 bear 6 1 tiger 30
+Bonus:
+Level: 6
+Tasks: 20 turkey 10 icecream
+First animals: 1 Buffalo 
+First coins: 200
+Wild animals: 2 bear 6 1 tiger 20 1 bear 35
+Bonus:

@@ -10,7 +10,7 @@ public class MissionFileProcessor {
         InputProcessor.coin += Integer.parseInt(coin[1]);
     }
 
-    public void new_farmAnimal() {
+    public static void new_farmAnimal() {
         String[] new_farmAnimals = MissionFileReader.read()[1].split("\\s+");
         for (int i = 2; i + 1 < new_farmAnimals.length; i += 2) {
             int quantity = Integer.parseInt(new_farmAnimals[i]);
@@ -28,10 +28,10 @@ public class MissionFileProcessor {
     }
 
 
-    public void new_wildAnimal() {
+    public static void new_wildAnimal() {
         String[] new_wildAnimals = MissionFileReader.read()[3].split("\\s+");
         for (int i = 2; i + 2 < new_wildAnimals.length; i += 3) {
-            if (InputProcessor.turnCounter == Integer.parseInt(new_wildAnimals[i + 2])) {
+            if (InputProcessor.turn == Integer.parseInt(new_wildAnimals[i + 2])) {
                 for (int j = 0; j < Integer.parseInt(new_wildAnimals[i]); j++) {
                     if (new_wildAnimals[i + 1].equalsIgnoreCase("lion")) {
                         WildAnimal wildAnimal = new WildAnimal(WildAnimalType.LION);
@@ -46,20 +46,25 @@ public class MissionFileProcessor {
     }
 
 
-    public void task() {
+    public static int[] task() {
+
         String[] temp = MissionFileReader.read()[0].split("\\s+");
+        int[] tedad= new int[temp.length+1];
         for (int i = 1; i < temp.length; i += 2) {
             int quantity = Integer.parseInt(temp[i]);
             int inGame_quantity = isTask(temp[i + 1]);
+            tedad[i-1]=quantity;
+            tedad[i]=inGame_quantity;
             if (quantity <= inGame_quantity) {
                 tasks[i] = true;
             }
         }
         IsWinning.isWinning(tasks);
+        return tedad;
 
     }
 
-    public int isTask(String task) {
+    public static int isTask(String task) {
         int quantity = 0;
         if (task.equalsIgnoreCase("chicken") || task.equalsIgnoreCase("turkey") || task.equalsIgnoreCase("buffalo")) {
             quantity = FarmAnimal.quantity(task);

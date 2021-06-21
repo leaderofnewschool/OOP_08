@@ -2,6 +2,9 @@ package models;
 
 import controller.InputProcessor;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class Truck {
     private int travelTime=10;
     private final int TRUCK_CAPACITY=15;
@@ -10,7 +13,8 @@ public class Truck {
     public int timer=0;
 
     public void loadTruck(String type) {
-        if (type.equalsIgnoreCase("CHIKEN") || type.equalsIgnoreCase("TURKEY") || type.equalsIgnoreCase("BUFFALO")) {
+        int isAvailable=0;
+        if (type.equalsIgnoreCase("CHICKEN") || type.equalsIgnoreCase("TURKEY") || type.equalsIgnoreCase("BUFFALO")) {
             for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
                 if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name().equalsIgnoreCase(type)){
                     if(ArrayLists.farmAnimalList.get(i).getFarmAnimalType().getAnimalDepotSize()<= truckCapacity_Left){
@@ -18,6 +22,8 @@ public class Truck {
                         ArrayLists.truckList.add(ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name());
                         ArrayLists.farmAnimalList.get(i).isTruck=true;
                         ArrayLists.farmAnimalList.get(i).store=false;
+                        ArrayLists.farmAnimalList.get(i).isAvailable=false;
+                        isAvailable++;
                         break;
                     }
                 }
@@ -29,24 +35,65 @@ public class Truck {
                     truckFill+=ArrayLists.storeList.get(i).getDepotSize();
                     ArrayLists.truckList.add(ArrayLists.storeList.get(i).getType());
                     ArrayLists.storeList.get(i).setTruck(true);
+                    isAvailable++;
                     break;
                 }
 
             }
 
         }
+        if(isAvailable!=0){
+            isAvailable=0;
+            Date date = new Date();
+            String s="Info: "+date+"\t"+type+" was successfully loaded";
+            try{
+                LogFileWriter.logFileWriter(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Date date = new Date();
+            String s="Error: "+date+"\t"+type+" was not available in the store";
+            try{
+                LogFileWriter.logFileWriter(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
     }
 
     public void unloadTruck(String type){
+        int isAvailable=0;
         for (int i = 0; i < ArrayLists.truckList.size(); i++) {
             if(ArrayLists.truckList.get(i).equals(type)){
                 ArrayLists.truckList.remove(i);
+                isAvailable++;
                 break;
             }
         }
+        if(isAvailable!=0){
+            Date date = new Date();
+            String s="Info: "+date+"\t"+type+" was successfully unloaded";
+            try{
+                LogFileWriter.logFileWriter(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Date date = new Date();
+            String s="Info: "+date+"\t"+type+" was not available in the truck";
+            try{
+                LogFileWriter.logFileWriter(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-        if (type.equalsIgnoreCase("CHIKEN") || type.equalsIgnoreCase("TURKEY") || type.equalsIgnoreCase("BUFFALO")){
+        if (type.equalsIgnoreCase("CHICKEN") || type.equalsIgnoreCase("TURKEY") || type.equalsIgnoreCase("BUFFALO")){
             for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
                 if(ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name().equalsIgnoreCase(type)) {
                     if (ArrayLists.farmAnimalList.get(i).isTruck) {
@@ -72,6 +119,14 @@ public class Truck {
 
     public void truckGo(){
         if(timer==travelTime){
+            Request.isTruck=false;
+            Date date = new Date();
+            String s="Info: "+date+"\ttruck is home :)";
+            try{
+                LogFileWriter.logFileWriter(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
           inTruckPrice();
             timer=0;
             ArrayLists.truckList.clear();
@@ -89,7 +144,11 @@ public class Truck {
             }
             return;
         }
-        else timer++;
+        else {
+            timer++;
+            System.out.println(timer);
+            System.out.println(travelTime);
+        }
 
     }
 

@@ -1,6 +1,9 @@
 // FEATHER ---> CLOTH
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class TailoringWorkshop extends Workshops{
     int counter=1;
     int timer=1;
@@ -29,6 +32,13 @@ public class TailoringWorkshop extends Workshops{
                 putProductInMap();
                 firstProduct.x = outputProductX;
                 firstProduct.y = outputProductY;
+                Date date = new Date();
+                String s="Info: "+date+"\t"+level+"\tcloth is ready";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             counter=1;
             Request.isTailoring=false;

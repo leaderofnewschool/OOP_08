@@ -14,7 +14,7 @@ public class MissionFileReader {
         String[] mission=null;
         try {
 
-            File file = new File("/Users/danial/IdeaProjects/OOP_08/missions.txt");
+            File file = new File(InputProcessor.path+"/missions.txt");
             Scanner scanner=new Scanner(file);
              mission = new String[5];
             while (scanner.hasNextLine()){

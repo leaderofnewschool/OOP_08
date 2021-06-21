@@ -1,0 +1,15 @@
+creation date: Mon Jun 21 22:17:38 IRDT 2021
+username: P
+password: T
+last change date: Mon Jun 21 22:18:32 IRDT 2021
+Info: P entered the game
+Info: Mon Jun 21 22:17:42 IRDT 2021	CHICKEN was successfully purchased
+Info: Mon Jun 21 22:17:42 IRDT 2021	CHICKEN was successfully purchased
+Info: Mon Jun 21 22:17:42 IRDT 2021	CHICKEN was successfully purchased
+Info: Mon Jun 21 22:17:42 IRDT 2021	CHICKEN was successfully purchased
+Info: Mon Jun 21 22:18:02 IRDT 2021	CHICKEN was successfully loaded
+Info: Mon Jun 21 22:18:13 IRDT 2021	wild animal is created
+Info: Mon Jun 21 22:18:13 IRDT 2021	wild animal is created
+Info: Mon Jun 21 22:18:13 IRDT 2021	wild animal is created
+Info: Mon Jun 21 22:18:13 IRDT 2021	wild animal is created
+Info: Mon Jun 21 22:18:32 IRDT 2021	truck is home :)

@@ -1,5 +1,8 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class FarmAnimal extends Animal {
     private int timeTillFill;
     private int productionPeriod;
@@ -10,30 +13,58 @@ public class FarmAnimal extends Animal {
     private FarmAnimalType farmAnimalType;
     int speed;
     private int live = 10;
+    public boolean isTargetedMove=false;
+    public boolean isTargetedMove2=false;
 
 
     public FarmAnimal(FarmAnimalType farmAnimalType) {
         this.farmAnimalType = farmAnimalType;
         this.productionPeriod = farmAnimalType.getProductionPeriod();
         this.speed = farmAnimalType.getSpeed();
+        ArrayLists.farmAnimalList.add(this);
+        Date date = new Date();
+        String s = "Info: " + date + "\t" + this.getFarmAnimalType().name() + " was successfully purchased";
+        try {
+            LogFileWriter.logFileWriter(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void eatGrass(FarmAnimal farmAnimal) {
+    public  void eatGrass(FarmAnimal farmAnimal) {
         int minX = 0;
         int minY = 0;
+        int j = 0;
         for (int i = 0; i < ArrayLists.grassList.size(); i++) {
-            if (i == 0) {
+            if (i == 0 && ArrayLists.grassList.get(i).isAvailable) {
                 minX = ArrayLists.grassList.get(i).x;
                 minY = ArrayLists.grassList.get(i).x;
             } else {
+                if(ArrayLists.grassList.get(i).isAvailable)
                 if (destination(minX, minY, farmAnimal.getX(), farmAnimal.getY()) > destination(ArrayLists.grassList.get(i).x, ArrayLists.grassList.get(i).y, farmAnimal.getX(), farmAnimal.getY())) {
                     minX = ArrayLists.grassList.get(i).x;
                     minY = ArrayLists.grassList.get(i).y;
+                    j = i;
                 }
             }
         }
-        targetedMove(farmAnimal.getSpeed(), farmAnimal.getX(), farmAnimal.getY(), minX, minY);
+        if(minX!=0&&minY!=0)
+        {
+            targetedMove(farmAnimal.getSpeed(),farmAnimal, minX, minY);
+            isTargetedMove=true;
+            if(isArrived) {
+                isTargetedMove=false;
+                live=10;
+                ArrayLists.grassList.get(j).isAvailable=false;
 
+            }
+            else live--;
+
+        }
+        else{
+            live--;
+            isTargetedMove=false;
+        }
     }
 
     public static void produceFromAnimal(FarmAnimal farmAnimal) {
@@ -73,7 +104,9 @@ public class FarmAnimal extends Animal {
     }
 
     private boolean isHungry() {
-        return live <= 5;
+        if (live <= 6)
+            return true;
+        return false;
     }
 
     public void removeByWild() {
@@ -95,8 +128,12 @@ public class FarmAnimal extends Animal {
 
     public void hunger() {
         if (!this.isHungry()) {
-            this.live--;
-        } else eatGrass(this);
+            {
+                this.live--;
+            }
+        } else {
+            eatGrass(this);
+        }
         if (this.live == 0) this.isAvailable = false;
 
     }

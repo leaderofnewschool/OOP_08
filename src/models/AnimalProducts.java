@@ -1,5 +1,8 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class AnimalProducts {
     int x;
     int y;
@@ -14,6 +17,13 @@ public class AnimalProducts {
         this.y = y;
         this.animalProductTypes = animalProductTypes;
         ArrayLists.animalProductList.add(this);
+        Date date = new Date();
+        String s="Info: "+date+"\tfarm animal produced ";
+        try {
+            LogFileWriter.logFileWriter(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public AnimalProductTypes getAnimalProductTypes() {

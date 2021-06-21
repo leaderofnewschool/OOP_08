@@ -1,0 +1,16 @@
+username: PARNIAN
+password: TAHERI
+level: 1
+coin: 0
+username: quit
+password: exit
+level: 1
+coin: 0
+username: P
+password: T
+level: 1
+coin: 0
+username: T
+password: EXIT
+level: 1
+coin: 0

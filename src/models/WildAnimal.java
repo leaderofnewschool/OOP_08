@@ -1,16 +1,28 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class WildAnimal extends Animal {
     public boolean store = false;
     private WildAnimalType wildAnimalType;
     private int cageClick;
     public boolean truck = false;
     boolean isAvailable=true;
+    int cageLeft=0;
 
     public WildAnimal(WildAnimalType wildAnimalType){
         this.wildAnimalType=wildAnimalType;
         this.cageClick = wildAnimalType.getCageClick();
         ArrayLists.wildAnimalList.add(this);
+
+        Date date = new Date();
+        String s="Info: "+date+"\twild animal is created";
+        try {
+            LogFileWriter.logFileWriter(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public WildAnimalType getWildAnimalType() { return wildAnimalType; }
