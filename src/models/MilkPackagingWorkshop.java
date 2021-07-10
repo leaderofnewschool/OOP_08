@@ -1,6 +1,9 @@
 // MILK ---> POCKET_MILK
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class MilkPackagingWorkshop extends Workshops {
     int counter = 1;
     int timer = 1;
@@ -29,6 +32,13 @@ public class MilkPackagingWorkshop extends Workshops {
                 putProductInMap();
                 firstProduct.x = outputProductX;
                 firstProduct.y = outputProductY;
+                Date date = new Date();
+                String s="Info: "+date+"\t"+level+"\tpocket milk is ready";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             counter = 1;
             Request.isMilk = false;

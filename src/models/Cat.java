@@ -1,9 +1,13 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class Cat extends Animal {
     public static final int BUY_CAT_COST = 150;
     public boolean isAvailable = true;
-
+    public  boolean isTargetedMove=false;
+    public boolean isTargetedMove2=false;
     public Cat() {
         ArrayLists.catList.add(this);
     }
@@ -74,17 +78,29 @@ public class Cat extends Animal {
             type = "secondaryProduct";
 
         }
-        Animal.targetedMove(this.getSpeed(), this.getX(), this.getY(), minX, minY);
-        if (temp) {
-            if (type.equals("animalProduct")) {
-                Store store = new Store(i1, type);
-            } else if (type.equals("firstProduct")) {
-                Store store = new Store(i2, type);
-            } else if (type.equals("secondaryProduct")) {
-                Store store = new Store(i3, type);
+        if(minX!=0&&minY!=0)
+        {
+           targetedMove(this.getSpeed(),this, minX, minY);
+            isTargetedMove=true;
+            if (isArrived) {
+                isTargetedMove=false;
+                if (type.equals("animalProduct")) {
+                    Store store = new Store(i1, type);
+                } else if (type.equals("firstProduct")) {
+                    Store store = new Store(i2, type);
+                } else if (type.equals("secondaryProduct")) {
+                    Store store = new Store(i3, type);
+                }
+                Date date = new Date();
+                String s="Info: "+date+"\tcat caught product";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-
+        else isTargetedMove=false;
 
     }
 

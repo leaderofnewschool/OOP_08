@@ -1,6 +1,9 @@
 // CLOTH ---> SHIRT
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class WeavingWorkshop extends Workshops{
     int counter=1;
     int timer=1;
@@ -29,6 +32,13 @@ public class WeavingWorkshop extends Workshops{
                 putProductInMap();
                 secondaryProduct.x = outputProductX;
                 secondaryProduct.y = outputProductY;
+                Date date = new Date();
+                String s="Info: "+date+"\t"+level+"\tshirt is ready";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             counter=1;
             Request.isWeaving=false;

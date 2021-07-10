@@ -1,11 +1,13 @@
 package controller;
 
 import controller.InputProcessor;
+import models.LogFileWriter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class LogIn {
@@ -23,7 +25,7 @@ public class LogIn {
 
         int fileSize = 0;
         try {
-            File file = new File("/Users/parniantaheri/IdeaProjects/OOP_08/users.txt");
+            File file = new File(InputProcessor.path+"/users.txt");
             Scanner fileReader = new Scanner(file);
             while (fileReader.hasNextLine()) {
                 temp[fileSize] = fileReader.nextLine();
@@ -45,7 +47,7 @@ public class LogIn {
                 int i = 0;
                 while (!user && username!="EXIT") {
                     for (i = 0; i < fileSize; i++) {
-                        if (temp[i].equals("username: " + username)) {
+                        if (temp[i].equalsIgnoreCase("username: " + username)) {
                             user = true;
                             break;
                         }
@@ -65,11 +67,34 @@ public class LogIn {
                     System.out.println("password: ");
                     password = scanner.nextLine();
                     while (!pass && password!="EXIT") {
-                        if (temp[i + 1].equals("password: " + password)) {
+                        if (temp[i + 1].equalsIgnoreCase("password: " + password)) {
                             pass = true;
                             check = true;
+
+                            try {
+                                FileWriter log = new FileWriter(InputProcessor.path+"/log.txt");
+                                Date date = new Date();
+                                log.write("creation date: "+date+"\nusername: "+username+"\npassword: "+password+"\nlast change date: "+date);
+                                log.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
+                            try {
+                                LogFileWriter.logFileWriter("Info: "+username+" entered the game");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             return;
                         } else {
+                            Date date = new Date();
+                            String s="Error: "+date+"\twrong password";
+                            try{
+                                LogFileWriter.logFileWriter(s);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             System.out.println("wrong password!! \nplease try again or for main menu please insert log out ");
                             password = scanner.nextLine();
                             if (password.equalsIgnoreCase("log out")) {
@@ -91,14 +116,22 @@ public class LogIn {
                     System.out.println("username: ");
                     username=scanner.nextLine();
                     for (int i = 0; i < fileSize; i++) {
-                        if (temp[i].equals(username))
+                        if (temp[i].equalsIgnoreCase("username: "+username))
                             counter++;
                     }
+
                     if(counter==0){
                         user=false;
                         check=true;
                     }
                     else{
+                        Date date = new Date();
+                        String s="Error: "+date+"\tthis username already exist";
+                        try{
+                            LogFileWriter.logFileWriter(s);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         System.out.println("this username is already available!!\nplease choose another username");
                         user=true;
                         counter=0;
@@ -108,8 +141,8 @@ public class LogIn {
                     System.out.println("password: ");
                     password=scanner.nextLine();
                 try {
-                    FileWriter fileWriter = new FileWriter("/Users/parniantaheri/IdeaProjects/OOP_08/users.txt",true);
-                    fileWriter.write("\nusername: "+username+"\npassword: "+password+"\nlevel: "+level+"\ncoin: "+coin);
+                    FileWriter fileWriter = new FileWriter(InputProcessor.path+"/users.txt",true);
+                    fileWriter.write("username: "+username+"\npassword: "+password+"\nlevel: "+level+"\ncoin: "+coin+"\n");
                     InputProcessor.username=username;
                     InputProcessor.password=password;
                     InputProcessor.coin=coin;
@@ -117,6 +150,24 @@ public class LogIn {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+
+                try {
+                    FileWriter log = new FileWriter(InputProcessor.path+"/log.txt");
+                    Date date = new Date();
+                    log.write("creation date: "+date+"\nusername: "+username+"\npassword: "+password+"\nlast change date: "+date);
+                    log.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                try {
+                    LogFileWriter.logFileWriter("Info: "+username+" entered the game");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
 
             }
             else if(insertCheck.equalsIgnoreCase("exit")){

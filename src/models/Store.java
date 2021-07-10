@@ -1,5 +1,8 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class Store {
     private final int CAPACITY=30;
     private int usedCapacity=0;
@@ -22,17 +25,17 @@ public class Store {
         storeCheck(i ,type);
     }
 
-    public void show(){
-        for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
-            if(ArrayLists.farmAnimalList.get(i).isAvailable){
-                //baraye truck depot mikhahim va depot e store 0 ast
-                System.out.println(ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name()+"   "+ArrayLists.farmAnimalList.get(i).getFarmAnimalType().getBuyCost()/2+"   "+ ArrayLists.farmAnimalList.get(i).getFarmAnimalType().getAnimalDepotSize());
-            }
-            for (int i1 = 0; i1 < ArrayLists.storeList.size(); i1++) {
-                System.out.println(ArrayLists.storeList.get(i));
-            }
-        }
-    }
+//    public void show(){
+//        for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
+//            if(ArrayLists.farmAnimalList.get(i).isAvailable){
+//                //baraye truck depot mikhahim va depot e store 0 ast
+//                System.out.println(ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name()+"   "+ArrayLists.farmAnimalList.get(i).getFarmAnimalType().getBuyCost()/2+"   "+ ArrayLists.farmAnimalList.get(i).getFarmAnimalType().getAnimalDepotSize());
+//            }
+//            for (int i1 = 0; i1 < ArrayLists.storeList.size(); i1++) {
+//                System.out.println(ArrayLists.storeList.get(i));
+//            }
+//        }
+//    }
     public void checkArrayLists(){
         for (int i = 0; i < ArrayLists.animalProductList.size(); i++) {
             if(ArrayLists.animalProductList.get(i).x==this.x & ArrayLists.animalProductList.get(i).y==this.y & ArrayLists.animalProductList.get(i).isAvailable){
@@ -97,7 +100,6 @@ public class Store {
             }
             else System.out.println("not enough space available");
         }
-
     }
 
 

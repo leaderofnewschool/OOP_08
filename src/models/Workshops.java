@@ -5,7 +5,7 @@ import java.util.Random;
 public class Workshops {
 
      int manufactureTime;
-     int buildingPrice;
+     public static int buildingPrice;
      int level;
      int outputProductX;
      int outputProductY;

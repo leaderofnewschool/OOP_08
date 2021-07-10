@@ -1,5 +1,8 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class FirstProducts {
     public boolean store = false;
     public boolean isAvailable = true;

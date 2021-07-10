@@ -1,5 +1,8 @@
 package models;
 
+import java.io.IOException;
+import java.util.Date;
+
 public class InStore {
     private String type;
     private int price;
@@ -10,6 +13,13 @@ public class InStore {
         this.type = type;
         this.price = price;
         this.depotSize = depotSize;
+        Date date = new Date();
+        String s="Info: "+date+"\t"+type+" was successfully stored";
+        try{
+            LogFileWriter.logFileWriter(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
