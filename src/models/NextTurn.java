@@ -29,6 +29,7 @@ public class NextTurn {
         if(Request.isMilk) milkPackagingWorkshop.milkPackagingProgress();
         if(Request.isWeaving) weavingWorkshop.weavingProgress();
         for (int i = 0; i < ArrayLists.wildAnimalList.size(); i++) {
+            ArrayLists.wildAnimalList.get(i).cageTime();
             ArrayLists.wildAnimalList.get(i).move();
         }
         for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
@@ -64,6 +65,15 @@ public class NextTurn {
             ArrayLists.dogList.get(i).move();
             int removed_dog= ArrayLists.dogList.get(i).removeDogAndWild();
             if(removed_dog!=0)  ArrayLists.dogList.remove(i);
+        }
+        for (int i = 0; i < ArrayLists.animalProductList.size(); i++) {
+            ArrayLists.animalProductList.get(i).removeByTime();
+        }
+        for (int i = 0; i < ArrayLists.firstProductList.size(); i++) {
+            ArrayLists.firstProductList.get(i).removeByTime();
+        }
+        for (int i = 0; i < ArrayLists.secondaryProductList.size(); i++) {
+            ArrayLists.secondaryProductList.get(i).removeByTime();
         }
 
     }

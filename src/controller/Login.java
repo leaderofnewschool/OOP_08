@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
-public class LogIn {
+ class Login {
 
     public void log(int level,int coin) {
         String insertCheck ="";

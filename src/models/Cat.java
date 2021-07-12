@@ -1,5 +1,8 @@
 package models;
 
+import com.sun.tools.javac.Main;
+import controller.InputProcessor;
+
 import java.io.IOException;
 import java.util.Date;
 
@@ -85,11 +88,11 @@ public class Cat extends Animal {
             if (isArrived) {
                 isTargetedMove=false;
                 if (type.equals("animalProduct")) {
-                    Store store = new Store(i1, type);
+                    Store.store(i1,type);
                 } else if (type.equals("firstProduct")) {
-                    Store store = new Store(i2, type);
+                    Store.store(i2,type);
                 } else if (type.equals("secondaryProduct")) {
-                    Store store = new Store(i3, type);
+                    Store.store(i3,type);
                 }
                 Date date = new Date();
                 String s="Info: "+date+"\tcat caught product";

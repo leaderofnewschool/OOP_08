@@ -128,6 +128,7 @@ public class Truck {
                 e.printStackTrace();
             }
           inTruckPrice();
+            System.out.println("InputProcessor.coin"+InputProcessor.coin);
             timer=0;
             ArrayLists.truckList.clear();
             truckFill=0;
@@ -146,8 +147,15 @@ public class Truck {
         }
         else {
             timer++;
-            System.out.println(timer);
-            System.out.println(travelTime);
+            System.out.println("timer"+timer);
+            System.out.println("travelTime"+travelTime);
+            Date date = new Date();
+            String s="Error: "+date+"\ttruck is on way ";
+            try{
+                LogFileWriter.logFileWriter(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }

@@ -1,9 +1,6 @@
 package controller;
 
-import models.MissionFileProcessor;
-import models.NextTurn;
-import models.Request;
-import models.UsersFileWriter;
+import models.*;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -21,7 +18,7 @@ public class InputProcessor {
     String input="";
     String[] fragmentedInput=null;
     Scanner sc = new Scanner(System.in);
-    LogIn logIn=new LogIn();
+    Login logIn=new Login();
     Menu menu=new Menu();
     NextTurn nextTurn = new NextTurn();
     Request request = new Request();
@@ -79,7 +76,7 @@ public class InputProcessor {
                 request.turn(Integer.parseInt(fragmentedInput[1]));
                 for (int i = 0; i < turnCounter; i++) {
                     nextTurn.next_turn();
-                    request.inquiry();
+                    HappeningsFile.happenings();
                     turn++;
                     UsersFileWriter.usersFileWriter();
                 }

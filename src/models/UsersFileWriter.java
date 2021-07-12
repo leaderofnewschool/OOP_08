@@ -24,13 +24,13 @@ public class UsersFileWriter {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < k; i++) {
+        for (int i = 0; i < k; i+=4) {
             if(users[i].equals("username: "+ InputProcessor.username)){
                 newUsers[i]="username: "+ InputProcessor.username;
                 newUsers[i+1]="password: "+ InputProcessor.password;
                 newUsers[i+2]="level: "+InputProcessor.level;
                 newUsers[i+3]="coin: "+InputProcessor.coin;
-                i+=4;
+
             }
             else newUsers[i]=users[i];
         }

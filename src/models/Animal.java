@@ -15,26 +15,20 @@ public class Animal {
     private int timeR = 0;
 
     public  void targetedMove(int speed, Animal animal, int destinationX, int destinationY) {
-//        System.out.println(destinationX+" "+destinationY);
         if (destinationX - animal.x == 0 & destinationY - animal.y == 0) {
             isArrived = true;
             return;
         }
         else if (destinationX - animal.x > 0 && animal.x<6) {
             animal.x += speed;
-//            System.out.println(2);
             }
-       else if (destinationX - animal.x < 0 && animal.x>1){ animal.x -=  speed;
-            System.out.println(1);
-       }
+       else if (destinationX - animal.x < 0 && animal.x>1){ animal.x -=  speed; }
 
         if (destinationY - animal.y < 0 && animal.y>1) {
             animal.y -= speed;
-          //  System.out.println(3);
         }
         else if (destinationY - animal.y > 0 && animal.y<6){
             animal.y += speed;
-          //  System.out.println(4);
         }
 
         if (destinationX - animal.x == 0 & destinationY - animal.y == 0) {

@@ -40,7 +40,7 @@ public class HappeningsFile {
         }
         for (int i = 0; i <ArrayLists.wildAnimalList.size() ; i++) {
             if(ArrayLists.wildAnimalList.get(i).isAvailable){
-                fileWriter.write(ArrayLists.wildAnimalList.get(i).getWildAnimalType().name()+"\t"+ArrayLists.wildAnimalList.get(i).cageLeft+"\t"+ArrayLists.wildAnimalList.get(i).getX()+"\t"+ArrayLists.wildAnimalList.get(i).getY()+"\n");            }
+                fileWriter.write(ArrayLists.wildAnimalList.get(i).getWildAnimalType().name()+"\t"+ArrayLists.wildAnimalList.get(i).cageLevel+"\t"+ArrayLists.wildAnimalList.get(i).getX()+"\t"+ArrayLists.wildAnimalList.get(i).getY()+"\n");            }
         }
         for (int i = 0; i <ArrayLists.animalProductList.size() ; i++) {
             if(ArrayLists.animalProductList.get(i).isAvailable){

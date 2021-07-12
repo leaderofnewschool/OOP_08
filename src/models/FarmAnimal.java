@@ -101,26 +101,26 @@ public class FarmAnimal extends Animal {
     }
 
     public static int quantity(String product) {
-        int chiken = 0;
+        int chicken = 0;
         int turkey = 0;
         int buffalo = 0;
         for (int i = 0; i < ArrayLists.farmAnimalList.size(); i++) {
             if (ArrayLists.farmAnimalList.get(i).isAvailable) {
-                if (product.equals("CHIKEN")) {
-                    if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().equals("CHIKEN"))
-                        chiken++;
-                } else if (product.equals("TURKEY")) {
-                    if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().equals("TURKEY"))
+                if (product.equalsIgnoreCase("CHICKEN")) {
+                    if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name().equalsIgnoreCase("CHICKEN"))
+                        chicken++;
+                } else if (product.equalsIgnoreCase("TURKEY")) {
+                    if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name().equalsIgnoreCase("TURKEY"))
                         turkey++;
-                } else if (product.equals("BUFFALO")) {
-                    if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().equals("BUFFALO"))
+                } else if (product.equalsIgnoreCase("BUFFALO")) {
+                    if (ArrayLists.farmAnimalList.get(i).getFarmAnimalType().name().equalsIgnoreCase("BUFFALO"))
                         buffalo++;
                 }
             }
         }
-        if (product.equals("CHIKEN")) return chiken;
-        else if (product.equals("TURKEY")) return turkey;
-        else if (product.equals("BUFFALO")) return buffalo;
+        if (product.equalsIgnoreCase("CHICKEN")) return chicken;
+        else if (product.equalsIgnoreCase("TURKEY")) return turkey;
+        else if (product.equalsIgnoreCase("BUFFALO")) return buffalo;
         return 0;
     }
 

@@ -15,7 +15,7 @@ public enum WildAnimalType {
         this.depotSize = depotSize;
         this.sellCost = sellCost;
         this.cageClick = cageClick;
-        this.depotRunTime=depotRunTime;
+        this.depotRunTime = depotRunTime;
         this.speed=speed;
     }
 
