@@ -8,16 +8,16 @@ public class MillWorkshop extends Workshops {
     int counter = 1;
     int timer = 1;
     int quantity = 1;
-
+    public static int buildingPrice = 150;
     MillWorkshop() {
-        super(1, 4, 150, "EGG", "FLOUR");
+        super(1, 4, "EGG", "FLOUR");
     }
 
     public void millMakingProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {
-                if (ArrayLists.storeList.get(i).equals("EGG")) {
+                if (ArrayLists.storeList.get(i).getType().equalsIgnoreCase("EGG")) {
                     ArrayLists.storeList.remove(i);
                     i--;
                     quantity++;
@@ -27,7 +27,7 @@ public class MillWorkshop extends Workshops {
         }
         timer = manufactureTime / quantity;
         if (counter == timer) {
-            for (int i = 0; i < quantity; i++) {
+            for (int i = 1; i < quantity; i++) {
                 FirstProducts firstProduct = new FirstProducts(FirstProductTypes.FLOUR);
                 putProductInMap();
                 firstProduct.x = outputProductX;
@@ -42,7 +42,10 @@ public class MillWorkshop extends Workshops {
             }
             counter = 1;
             Request.isMill = false;
-        } else counter++;
+        } else {
+            counter++;
+        }
+
     }
 
 }

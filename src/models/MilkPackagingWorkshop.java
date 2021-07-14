@@ -9,15 +9,16 @@ public class MilkPackagingWorkshop extends Workshops {
     int timer = 1;
     int quantity = 1;
 
+    public static int buildingPrice = 400;
     MilkPackagingWorkshop() {
-        super(1, 6, 400, "MILK", "POCKET_MILK");
+        super(1, 6, "MILK", "POCKET_MILK");
     }
 
     public void milkPackagingProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {
-                if (ArrayLists.storeList.get(i).equals("MILK")) {
+                if (ArrayLists.storeList.get(i).getType().equalsIgnoreCase("MILK")) {
                     ArrayLists.storeList.remove(i);
                     i--;
                     quantity++;
@@ -27,7 +28,7 @@ public class MilkPackagingWorkshop extends Workshops {
         }
         timer = manufactureTime / quantity;
         if (counter == timer) {
-            for (int i = 0; i < quantity; i++) {
+            for (int i = 1; i < quantity; i++) {
                 FirstProducts firstProduct = new FirstProducts(FirstProductTypes.PACKET_MILK);
                 putProductInMap();
                 firstProduct.x = outputProductX;

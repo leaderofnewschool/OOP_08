@@ -5,7 +5,6 @@ import java.util.Random;
 public class Workshops {
 
      int manufactureTime;
-     public static int buildingPrice;
      int level;
      int outputProductX;
      int outputProductY;
@@ -18,10 +17,9 @@ public class Workshops {
      Random rnd;
 
 
-    public Workshops(int level, int manufactureTime, int buildingPrice, String entryProductType, String outputProductType ) {
+    public Workshops(int level, int manufactureTime, String entryProductType, String outputProductType ) {
         this.level = level;
         this.manufactureTime = manufactureTime;
-        this.buildingPrice = buildingPrice;
         this.entryProductType = entryProductType;
         this.outputProductType = outputProductType;
     }

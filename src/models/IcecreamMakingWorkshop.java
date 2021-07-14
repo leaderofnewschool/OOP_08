@@ -4,20 +4,21 @@ package models;
 import java.io.IOException;
 import java.util.Date;
 
+
 public class IcecreamMakingWorkshop extends Workshops {
     int counter = 1;
     int timer = 1;
     int quantity = 1;
-
+    public static int buildingPrice = 550;
     IcecreamMakingWorkshop() {
-        super(1, 7, 550, "PACKET_MILK", "ICECREAM");
+        super(1, 7, "PACKET_MILK", "ICECREAM");
     }
 
     public void icecreamMakingProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {
-                if (ArrayLists.storeList.get(i).equals("PACKET_MILK")) {
+                if (ArrayLists.storeList.get(i).getType().equalsIgnoreCase("PACKET_MILK")) {
                     ArrayLists.storeList.remove(i);
                     i--;
                     quantity++;
@@ -27,7 +28,7 @@ public class IcecreamMakingWorkshop extends Workshops {
         }
         timer = manufactureTime / quantity;
         if (counter == timer) {
-            for (int i = 0; i < quantity; i++) {
+            for (int i = 1; i < quantity; i++) {
                 SecondaryProducts secondaryProduct = new SecondaryProducts(SecondaryProductTypes.ICECREAM);
                 putProductInMap();
                 secondaryProduct.x = outputProductX;

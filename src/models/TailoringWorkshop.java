@@ -8,16 +8,16 @@ public class TailoringWorkshop extends Workshops{
     int counter=1;
     int timer=1;
     int quantity = 1;
-
+    public static int buildingPrice=400;
     TailoringWorkshop (){
-        super(1,5,250,"FEATHER", "CLOTH");
+        super(1,5, "FEATHER", "CLOTH");
     }
 
     public void tailoringProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {
-                if (ArrayLists.storeList.get(i).equals("FEATHER")) {
+                if (ArrayLists.storeList.get(i).getType().equalsIgnoreCase("FEATHER")) {
                     ArrayLists.storeList.remove(i);
                     i--;
                     quantity++;
@@ -27,7 +27,7 @@ public class TailoringWorkshop extends Workshops{
         }
         timer = manufactureTime / quantity;
         if (counter == timer) {
-            for (int i = 0; i < quantity; i++) {
+            for (int i = 1; i < quantity; i++) {
                 FirstProducts firstProduct = new FirstProducts(FirstProductTypes.CLOTH);
                 putProductInMap();
                 firstProduct.x = outputProductX;

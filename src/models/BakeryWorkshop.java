@@ -9,15 +9,16 @@ public class BakeryWorkshop extends Workshops {
     int timer = 1;
     int quantity = 1;
 
+    public static int buildingPrice = 250;
     public BakeryWorkshop() {
-        super(1, 5, 250, "FLOUR", "BREAD");
+        super(1, 5, "FLOUR", "BREAD");
     }
 
     public void bakeryProgress() {
         isWorking = true;
         if (counter == 1) {
             for (int i = 0; i < ArrayLists.storeList.size(); i++) {
-                if (ArrayLists.storeList.get(i).equals("FLOUR")) {
+                if (ArrayLists.storeList.get(i).getType().equalsIgnoreCase("FLOUR")) {
                     ArrayLists.storeList.remove(i);
                     i--;
                     quantity++;
@@ -27,7 +28,7 @@ public class BakeryWorkshop extends Workshops {
         }
         timer = manufactureTime / quantity;
         if (counter == timer) {
-            for (int i = 0; i < quantity; i++) {
+            for (int i = 1; i < quantity; i++) {
                 SecondaryProducts secondaryProduct = new SecondaryProducts(SecondaryProductTypes.BREAD);
                 putProductInMap();
                 secondaryProduct.x = outputProductX;

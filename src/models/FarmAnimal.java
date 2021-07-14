@@ -68,36 +68,37 @@ public class FarmAnimal extends Animal {
     }
 
     public static void produceFromAnimal(FarmAnimal farmAnimal) {
-        if (farmAnimal.farmAnimalType.name().equals("CHICKEN")) {
-            AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.EGG, farmAnimal.getX(), farmAnimal.getY());
-            Date date = new Date();
-            String s = "Info: " + date + "\t" +farmAnimal.farmAnimalType.name() + " produced egg";
-            try {
-                LogFileWriter.logFileWriter(s);
-            } catch (IOException e) {
-                e.printStackTrace();
+        if(farmAnimal.isAvailable) {
+            if (farmAnimal.farmAnimalType.name().equals("CHICKEN")) {
+                AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.EGG, farmAnimal.getX(), farmAnimal.getY());
+                Date date = new Date();
+                String s = "Info: " + date + "\t" + farmAnimal.farmAnimalType.name() + " produced egg";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (farmAnimal.farmAnimalType.name().equals("TURKEY")) {
+                AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.FEATHER, farmAnimal.getX(), farmAnimal.getY());
+                Date date = new Date();
+                String s = "Info: " + date + "\t" + farmAnimal.farmAnimalType.name() + " produced feather";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (farmAnimal.farmAnimalType.name().equals("BUFFALO")) {
+                AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.MILK, farmAnimal.getX(), farmAnimal.getY());
+                Date date = new Date();
+                String s = "Info: " + date + "\t" + farmAnimal.farmAnimalType.name() + " produced milk";
+                try {
+                    LogFileWriter.logFileWriter(s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        } else if (farmAnimal.farmAnimalType.name().equals("TURKEY")) {
-            AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.FEATHER, farmAnimal.getX(), farmAnimal.getY());
-            Date date = new Date();
-            String s = "Info: " + date + "\t" +farmAnimal.farmAnimalType.name() + " produced feather";
-            try {
-                LogFileWriter.logFileWriter(s);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else if (farmAnimal.farmAnimalType.name().equals("BUFFALO")) {
-            AnimalProducts animalProducts = new AnimalProducts(AnimalProductTypes.MILK, farmAnimal.getX(), farmAnimal.getY());
-            Date date = new Date();
-            String s = "Info: " + date + "\t" + farmAnimal.farmAnimalType.name() + " produced milk";
-            try {
-                LogFileWriter.logFileWriter(s);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
         }
-
-
     }
 
     public static int quantity(String product) {

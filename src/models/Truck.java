@@ -147,8 +147,6 @@ public class Truck {
         }
         else {
             timer++;
-            System.out.println("timer"+timer);
-            System.out.println("travelTime"+travelTime);
             Date date = new Date();
             String s="Error: "+date+"\ttruck is on way ";
             try{

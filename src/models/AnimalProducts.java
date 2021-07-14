@@ -62,7 +62,6 @@ public class AnimalProducts {
                 if (product.equalsIgnoreCase("EGG")) {
                     if (ArrayLists.storeList.get(i).getType().equals("EGG"))
                         egg++;
-                    System.out.println("egg= "+egg);
                 } else if (product.equalsIgnoreCase("FEATHER")) {
                     if (ArrayLists.storeList.get(i).getType().equals("FEATHER"))
                         feather++;
